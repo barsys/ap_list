@@ -1,8 +1,7 @@
-<html>
-<head>
-	<title>login page</title>
-</head>
-<body>
-<h1><?php echo $message ?></h1>
-</body>
-</html>
+
+<?php
+$this->load->helper('form'); 
+echo form_open('login/exec_login'); ?>
+  アカウント <input type="text" name="account" value="" />
+  パスワード <input type="password" name="password" value="" />
+  <input type="submit" value="送信" />
