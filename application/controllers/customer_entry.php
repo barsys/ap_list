@@ -26,8 +26,25 @@ class Customer_entry extends CI_Controller {
             'cust_status' => $this->input->post('cust_status')
         );
 
-        $this->Customer->entry_customer($data);
-        redirect('customer_list/index', 'location');
+        $this->load->helper(array('form'));
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('company_name', '会社名', 'required');
+        $this->form_validation->set_rules('address', '住所', 'required');
+        $this->form_validation->set_rules('tel', '電話番号', 'required');
+        $this->form_validation->set_rules('email', 'メールアドレス', 'required');
+        $this->form_validation->set_rules('person_in_charge', '担当者', 'required');
+        $this->form_validation->set_rules('cust_status', 'ステータス', 'required');
+
+        if ($this->form_validation->run())
+        {
+            $this->Customer->entry_customer($data);
+            redirect('customer_list/index', 'location');
+        } else {
+            $this->load->view('customer_entry.html');
+        }
+
     }
 
 }

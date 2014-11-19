@@ -11,7 +11,7 @@
     ?>
     <br>
     <h3>顧客管理：新規登録</h3>
-
+<?php echo validation_errors(); ?>
     <form action="<?base_url();?>/customer_entry/entry" method='post'>
     
     会社名：<input type="text" name="company_name" value=""/><br>
