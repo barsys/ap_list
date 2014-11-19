@@ -1,17 +1,20 @@
 <html>
+  <meta charset="utf-8">
   <head>
     <title>顧客管理一覧</title>
+    <script src="../js/changeShop.js"      type="text/javascript" charset="UTF-8"></script>
   </head>
   <body>
-    <?php
+    <?
+      $this->load->helper('url');
       require_once('parts/header.html');
       require_once('parts/menu.html');
     ?>
     <br>
-    <?php
-      echo $message;
-    ?>
-    
-    
+    <h2>顧客管理：一覧</h2>
+
+    <form action="<?base_url();?>/customer_entry" method='post'>
+      <input type='submit' value='新規登録' />
+    </form>
   </body>
 </html>
