@@ -1,10 +1,12 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
 class Customer extends CI_Model {
 
     public function get_customer(){
-        return $this->db->get('customer');
+         $test = $this->db->get('customer');
+         return $test->result();
+
     }
 
 

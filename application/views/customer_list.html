@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <head>
     <title>顧客管理一覧</title>
-    <script src="../js/changeShop.js"      type="text/javascript" charset="UTF-8"></script>
+    
   </head>
   <body>
     <?
@@ -13,8 +13,34 @@
     <br>
     <h2>顧客管理：一覧</h2>
 
-    <form action="<?base_url();?>/customer_entry" method='post'>
+    <form action="<?base_url();?>/customer_info/display_entry" method='post'>
       <input type='submit' value='新規登録' />
     </form>
+    <table border="1">
+    <tr>
+      <td>会社名</td>
+      <td>住所</td>
+      <td>電話番号</td>
+      <td>メールアドレス</td>
+      <td>担当者名</td>
+      <td>ステータス</td>
+    </tr>
+
+    <? foreach($list_data as $data){ ?>
+    <tr>
+      <td><?= $data->company_name; ?></td>
+      <td><?= $data->address; ?></td>
+      <td><?= $data->tel; ?></td>
+      <td><?= $data->email; ?></td>
+      <td><?= $data->person_in_charge; ?></td>
+      <td><?= $data->cust_status; ?></td>
+    </tr>
+    <? } ?>
+    </table>
+    
+    <form action="<?base_url();?>/customer_info/display_entry" method='post'>
+      <input type='submit' value='新規登録' />
+    </form>
+    
   </body>
 </html>

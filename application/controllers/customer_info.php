@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Customer_entry extends CI_Controller {
+class Customer_info extends CI_Controller {
 
     function __construct()
     {
@@ -8,22 +8,29 @@ class Customer_entry extends CI_Controller {
         $this->load->helper('url');
     }
 
-    function index()
+    public function index()
     {
-        $data['message'] = 'customer_list Page!!!';
-        $this->load->view('customer_entry.html', $data);
+        $this->load->model('Customer');
+        $data['list_data'] = $this->Customer->get_customer();
+
+        $this->load->view('customer_list.html', $data);
     }
 
-    function entry() {
+    public function display_entry()
+    {
+        $this->load->view('customer_entry.html');
+    }
+
+   public function entry() {
         $this->load->model('Customer');
 
         $data = array(
-            'company_name' => $this->input->post('company_name'),
-            'address' => $this->input->post('address'),
-            'tel' => $this->input->post('tel'),
-            'email' => $this->input->post('email'),
-            'person_in_charge' => $this->input->post('person_in_charge'),
-            'cust_status' => $this->input->post('cust_status')
+                        'company_name' => $this->input->post('company_name'),
+                        'address' => $this->input->post('address'),
+                        'tel' => $this->input->post('tel'),
+                        'email' => $this->input->post('email'),
+                        'person_in_charge' => $this->input->post('person_in_charge'),
+                        'cust_status' => $this->input->post('cust_status')
         );
 
         $this->load->helper(array('form'));
@@ -40,7 +47,7 @@ class Customer_entry extends CI_Controller {
         if ($this->form_validation->run())
         {
             $this->Customer->entry_customer($data);
-            redirect('customer_list/index', 'location');
+            redirect('customer_info/index', 'location');
         } else {
             $this->load->view('customer_entry.html');
         }
