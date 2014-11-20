@@ -24,6 +24,7 @@
       <td>メールアドレス</td>
       <td>担当者名</td>
       <td>ステータス</td>
+      <td>操作</td>
     </tr>
 
     <? foreach($list_data as $data){ ?>
@@ -34,6 +35,11 @@
       <td><?= $data->email; ?></td>
       <td><?= $data->person_in_charge; ?></td>
       <td><?= $data->cust_status; ?></td>
+      <td>
+      <a href="<?base_url();?>/customer_info/display_edit?cust_id=<?= $data->cust_id; ?>">編集</a>｜
+      <a href="<?base_url();?>/customer_info/display_delete?cust_id=<?= $data->cust_id; ?>">削除</a>
+      
+      </td>
     </tr>
     <? } ?>
     </table>

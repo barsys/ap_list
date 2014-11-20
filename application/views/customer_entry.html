@@ -11,23 +11,27 @@
     ?>
     <br>
     <h3>顧客管理：新規登録</h3>
+    
+    <? if(isset($edit)): ?>
+      <form action="<?base_url();?>/customer_info/edit" method='post'>
+      <input type="hidden" name="cust_id" value="<?= $cust_id ?>">
+    <? else: ?>
+      <form action="<?base_url();?>/customer_info/entry" method='post'>
+    <? endif; ?>
 
-    <form action="<?base_url();?>/customer_info/entry" method='post'>
-
-    会社名：<input type="text" name="company_name" value=""/><br>
-    住所：<input type="text" name="address" value=""/><br>
-    担当者：<input type="text" name="person_in_charge" value=""/><br>
-    TEL：<input type="text" name="tel" value=""/><br>
-    Email：<input type="text" name="email" value=""/><br>
+    会社名：<input type="text" name="company_name" value="<? if(isset($company_name))echo $company_name; ?>" /><br>
+    住所：<input type="text" name="address" value="<? if(isset($address))echo $address; ?>" /><br>
+    担当者：<input type="text" name="person_in_charge" value="<? if(isset($person_in_charge))echo $person_in_charge; ?>" /><br>
+    TEL：<input type="text" name="tel" value="<? if(isset($tel))echo $tel; ?>" /><br>
+    Email：<input type="text" name="email" value="<? if(isset($email))echo $email; ?>" /><br>
     ステータス：
-    <select name="cust_status">
-      <option value="1">契約中</option>
-      <option value="2">契約破棄</option>
-      <option value="3">テスト</option>
+    <select name="cust_status"> 
+      <option value="1" <? if(isset($cust_status) && $cust_status == 1)echo 'selected' ?> >契約中</option>
+      <option value="2" <? if(isset($cust_status) && $cust_status == 2)echo 'selected' ?> >契約破棄</option>
+      <option value="3" <? if(isset($cust_status) && $cust_status == 3)echo 'selected' ?> >テスト</option>
     </select>
     <br>
     AP情報
-
       <input type='submit' value='登録' />
     </form>
   </body>
