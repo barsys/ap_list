@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 
   public function index() {
     $this->is_login();
-    redirect('customer_list/index', 'location');
+    redirect('customer_info/index', 'location');
     //$this->load->view('customer_list.html');
   }
 }
