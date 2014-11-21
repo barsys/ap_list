@@ -107,10 +107,16 @@ class Customer_info extends CI_Controller {
             $this->Customer->edit($data);
             redirect('customer_info/index', 'location');
         } else {
-            log_message('debug', 'ELSE');
             $this->load->view('customer_entry.html');
         }
-
     }
+
+
+    public function delete() {
+        $this->load->model('Customer');
+        $this->Customer->delete($this->input->get('cust_id'));
+        redirect('customer_info/index', 'location');
+    }
+
 
 }
