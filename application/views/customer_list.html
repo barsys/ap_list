@@ -5,7 +5,7 @@
     
   </head>
   <body>
-    <?
+    <?php
       $this->load->helper('url');
       require_once('parts/header.html');
       require_once('parts/menu.html');
@@ -13,7 +13,7 @@
     <br>
     <h2>顧客管理：一覧</h2>
 
-    <form action="<?base_url();?>/customer_info/display_entry" method='post'>
+    <form action="<?php base_url();?>/customer_info/display_entry" method='post'>
       <input type='submit' value='新規登録' />
     </form>
     <table border="1">
@@ -27,24 +27,24 @@
       <td>操作</td>
     </tr>
 
-    <? foreach($list_data as $data){ ?>
+    <?php foreach($list_data as $data){ ?>
     <tr>
-      <td><?= $data->company_name; ?></td>
-      <td><?= $data->address; ?></td>
-      <td><?= $data->tel; ?></td>
-      <td><?= $data->email; ?></td>
-      <td><?= $data->person_in_charge; ?></td>
-      <td><?= $data->cust_status; ?></td>
+      <td><?php echo $data->company_name; ?></td>
+      <td><?php echo $data->address; ?></td>
+      <td><?php echo $data->tel; ?></td>
+      <td><?php echo $data->email; ?></td>
+      <td><?php echo $data->person_in_charge; ?></td>
+      <td><?php echo $data->cust_status; ?></td>
       <td>
-      <a href="<?base_url();?>/customer_info/display_edit?cust_id=<?= $data->cust_id; ?>">編集</a>｜
-      <a href="<?base_url();?>/customer_info/display_delete?cust_id=<?= $data->cust_id; ?>">削除</a>
+      <a href="<?php base_url();?>/customer_info/display_edit?cust_id=<?php echo $data->cust_id; ?>">編集</a>｜
+      <a href="<?php base_url();?>/customer_info/display_delete?cust_id=<?php echo $data->cust_id; ?>">削除</a>
       
       </td>
     </tr>
-    <? } ?>
+    <?php } ?>
     </table>
     
-    <form action="<?base_url();?>/customer_info/display_entry" method='post'>
+    <form action="<?php base_url();?>/customer_info/display_entry" method='post'>
       <input type='submit' value='新規登録' />
     </form>
     

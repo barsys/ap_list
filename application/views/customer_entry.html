@@ -4,7 +4,7 @@
     <title>顧客管理新規登録</title>
   </head>
   <body>
-    <?
+    <?php
       $this->load->helper('url');
       require_once('parts/header.html');
       require_once('parts/menu.html');
@@ -12,23 +12,23 @@
     <br>
     <h3>顧客管理：新規登録</h3>
     
-    <? if(isset($edit)): ?>
-      <form action="<?base_url();?>/customer_info/edit" method='post'>
-      <input type="hidden" name="cust_id" value="<?= $cust_id ?>">
-    <? else: ?>
-      <form action="<?base_url();?>/customer_info/entry" method='post'>
-    <? endif; ?>
+    <?php if(isset($edit)): ?>
+      <form action="<?php base_url();?>/customer_info/edit" method='post'>
+      <input type="hidden" name="cust_id" value="<?php echo $cust_id ?>">
+    <?php else: ?>
+      <form action="<?php base_url();?>/customer_info/entry" method='post'>
+    <?php endif; ?>
 
-    会社名：<input type="text" name="company_name" value="<? if(isset($company_name))echo $company_name; ?>" /><br>
-    住所：<input type="text" name="address" value="<? if(isset($address))echo $address; ?>" /><br>
-    担当者：<input type="text" name="person_in_charge" value="<? if(isset($person_in_charge))echo $person_in_charge; ?>" /><br>
-    TEL：<input type="text" name="tel" value="<? if(isset($tel))echo $tel; ?>" /><br>
-    Email：<input type="text" name="email" value="<? if(isset($email))echo $email; ?>" /><br>
+    会社名：<input type="text" name="company_name" value="<?php if(isset($company_name))echo $company_name; ?>" /><br>
+    住所：<input type="text" name="address" value="<?php if(isset($address))echo $address; ?>" /><br>
+    担当者：<input type="text" name="person_in_charge" value="<?php if(isset($person_in_charge))echo $person_in_charge; ?>" /><br>
+    TEL：<input type="text" name="tel" value="<?php if(isset($tel))echo $tel; ?>" /><br>
+    Email：<input type="text" name="email" value="<?php if(isset($email))echo $email; ?>" /><br>
     ステータス：
     <select name="cust_status"> 
-      <option value="1" <? if(isset($cust_status) && $cust_status == 1)echo 'selected' ?> >契約中</option>
-      <option value="2" <? if(isset($cust_status) && $cust_status == 2)echo 'selected' ?> >契約破棄</option>
-      <option value="3" <? if(isset($cust_status) && $cust_status == 3)echo 'selected' ?> >テスト</option>
+      <option value="1" <?php if(isset($cust_status) && $cust_status == 1)echo 'selected' ?> >契約中</option>
+      <option value="2" <?php if(isset($cust_status) && $cust_status == 2)echo 'selected' ?> >契約破棄</option>
+      <option value="3" <?php if(isset($cust_status) && $cust_status == 3)echo 'selected' ?> >テスト</option>
     </select>
     <br>
     AP情報
