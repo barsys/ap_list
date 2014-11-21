@@ -13,7 +13,7 @@
     <br>
     <h2>顧客管理：一覧</h2>
 
-    <form action="<?php base_url();?>/customer_info/display_entry" method='post'>
+    <form action="<?php echo base_url();?>/customer_info/display_entry" method='post'>
       <input type='submit' value='新規登録' />
     </form>
     <table border="1">
@@ -36,15 +36,15 @@
       <td><?php echo $data->person_in_charge; ?></td>
       <td><?php echo $data->cust_status; ?></td>
       <td>
-      <a href="<?php base_url();?>/customer_info/display_edit?cust_id=<?php echo $data->cust_id; ?>">編集</a>｜
-      <a href="<?php base_url();?>/customer_info/display_delete?cust_id=<?php echo $data->cust_id; ?>">削除</a>
+      <a href="<?php echo base_url();?>/customer_info/display_edit?cust_id=<?php echo $data->cust_id; ?>">編集</a>｜
+      <a href="<?php echo base_url();?>/customer_info/display_delete?cust_id=<?php echo $data->cust_id; ?>">削除</a>
       
       </td>
     </tr>
     <?php } ?>
     </table>
     
-    <form action="<?php base_url();?>/customer_info/display_entry" method='post'>
+    <form action="<?php echo base_url();?>/customer_info/display_entry" method='post'>
       <input type='submit' value='新規登録' />
     </form>
     
