@@ -46,7 +46,7 @@ class Login extends CI_Controller {
         $this->load->model('User');
         $user_data = $this->User->get_user_by_user_name($user_name);
 
-        if(!empty($user_data) & $user_data['0']->password === md5($password)) {
+        if(!empty($user_data) && $user_data['0']->password === md5($password)) {
             return true;
         }
 
