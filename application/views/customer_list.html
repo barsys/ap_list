@@ -18,6 +18,7 @@
     </form>
     <table border="1">
     <tr>
+      <td>顧客ID</td>
       <td>会社名</td>
       <td>住所</td>
       <td>電話番号</td>
@@ -29,6 +30,7 @@
 
     <?php foreach($list_data as $data){ ?>
     <tr>
+      <td><?php echo $data->cust_id; ?></td>
       <td><?php echo $data->company_name; ?></td>
       <td><?php echo $data->address; ?></td>
       <td><?php echo $data->tel; ?></td>

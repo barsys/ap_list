@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `ap` (
+  `ap_id` int(11) NOT NULL AUTO_INCREMENT,
+  `part_no` varchar(16) NOT NULL,
+  `serial_no` varchar(32) UNIQUE NOT NULL,
+  `qr_code` varchar(32) UNIQUE NOT NULL,
+  `mac_address` varchar(16) UNIQUE NOT NULL,
+  `cust_id` int(11) NOT NULL,
+  `latitude` decimal(9,6),
+  `longitude` decimal(9,6),
+  `global_ip` varchar(16),
+  `start_licence_date` datetime,
+  `start_operation_date` datetime,
+  `connection_confirm_date` datetime,
+  `ap_status` tinyint NOT NULL,
+  `comment` varchar(128),
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `delete_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`ap_id`),
+  INDEX (`cust_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
