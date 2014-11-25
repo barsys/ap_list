@@ -1,0 +1,44 @@
+<html>
+  <meta charset="utf-8">
+  <head>
+    <title>AP管理新規登録</title>
+  </head>
+  <body>
+    <?php
+      $this->load->helper('url');
+      require_once('parts/header.html');
+      require_once('parts/menu.html');
+    ?>
+    <br>
+    <h3>AP管理：新規登録</h3>
+    
+    <?php if(isset($edit)): ?>
+      <form action="<?php echo base_url();?>ap_info/edit" method='post'>
+      <input type="hidden" name="ap_id" value="<?php echo $ap_id ?>">
+    <?php else: ?>
+      <form action="<?php echo base_url();?>ap_info/entry" method='post'>
+    <?php endif; ?>
+
+    partNo.：<input type="text" name="part_no" value="<?php if(isset($part_no))echo $part_no; ?>" /><br>
+    serialNo.：<input type="text" name="serial_no" value="<?php if(isset($serial_no))echo $serial_no; ?>" /><br>
+    QRコード：<input type="text" name="qr_code" value="<?php if(isset($qr_code))echo $qr_code; ?>" /><br>
+    MAC：<input type="text" name="mac_address" value="<?php if(isset($mac_address))echo $mac_address; ?>" /><br>
+    顧客ID：<input type="text" name="cust_id" value="<?php if(isset($cust_id))echo $cust_id; ?>" /><br>
+    緯度：<input type="text" name="latitude" value="<?php if(isset($latitude))echo $latitude; ?>" /><br>
+    経度：<input type="text" name="longitude" value="<?php if(isset($longitude))echo $longitude; ?>" /><br>
+    グローバルIP：<input type="text" name="global_ip" value="<?php if(isset($global_ip))echo $global_ip; ?>" /><br>
+    ライセンス開始日時：<input type="text" name="start_licence_date" value="<?php if(isset($start_licence_date))echo $start_licence_date; ?>" /><br>
+    稼働開始日：<input type="text" name="start_operation_date" value="<?php if(isset($start_operation_date))echo $start_operation_date; ?>" /><br>
+    疎通確認日：<input type="text" name="connection_confirm_date" value="<?php if(isset($connection_confirm_date))echo $connection_confirm_date; ?>" /><br>
+    ステータス：
+    <select name="ap_status"> 
+      <option value="1" <?php if(isset($ap_status) && $ap_status == 1)echo 'selected' ?> >契約中</option>
+      <option value="2" <?php if(isset($ap_status) && $ap_status == 2)echo 'selected' ?> >契約破棄</option>
+      <option value="3" <?php if(isset($ap_status) && $ap_status == 3)echo 'selected' ?> >テスト</option>
+    </select>
+    <br>
+    備考：<input type="text" name="comment" value="<?php if(isset($comment))echo $comment; ?>" /><br>
+      <input type='submit' value='登録' />
+    </form>
+  </body>
+</html>
