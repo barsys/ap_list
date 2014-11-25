@@ -6,6 +6,8 @@ class Ap_info extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('Ap_sessions');
+        $this->Ap_sessions->check_session();
     }
 
     public function index()
