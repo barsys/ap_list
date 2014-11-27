@@ -3,42 +3,28 @@
 
 class Export_log extends CI_Model {
 
-    public function gets_customer(){
+    public function gets_export_log(){
          $logs = $this->db->get_where('export_log', array('delete_time' => NULL));
          return $logs->result();
 
+   }
+
+    public function get_export_log_new_data($use) {
+        $this->db->order_by("create_time", "desc");
+        $this->db->limit(1);
+        $this->db->where('use', $use);
+        $this->db->where('delete_time IS NULL');
+        $result = $this->db->get('export_log');
+        return $result->result();
     }
 
-    public function get_customer($cust_id){
-        $customer = $this->db->get_where('customer', array('cust_id' => $cust_id));
-        return $customer->result();
+    public function entry($file_name, $use, $type, $user_id){
+        $this->db->set('file_name', $file_name);
+        $this->db->set('use', $use);
+        $this->db->set('type', $type);
+        $this->db->set('user_id', $user_id);
+        $this->db->set('export_time', date("Y/m/d H:i:s"));
+        $this->db->set('create_time', date("Y/m/d H:i:s"));
+        $this->db->insert('export_log');
     }
-
-//     public function entry($data){
-//         $this->db->set('company_name', $data['company_name']);
-//         $this->db->set('address', $data['address']);
-//         $this->db->set('tel', $data['tel']);
-//         $this->db->set('email', $data['email']);
-//         $this->db->set('person_in_charge', $data['person_in_charge']);
-//         $this->db->set('cust_status', $data['cust_status']);
-//         $this->db->set('create_time', date("Y/m/d H:i:s"));
-//         $this->db->insert('customer');
-//     }
-
-//     public function edit($data){
-//         $this->db->set('company_name', $data['company_name']);
-//         $this->db->set('address', $data['address']);
-//         $this->db->set('tel', $data['tel']);
-//         $this->db->set('email', $data['email']);
-//         $this->db->set('person_in_charge', $data['person_in_charge']);
-//         $this->db->set('cust_status', $data['cust_status']);
-//         $this->db->where('cust_id', $data['cust_id']);
-//         $this->db->update('customer');
-//     }
-
-//     public function delete($cust_id){
-//         $this->db->set('delete_time', date("Y/m/d H:i:s"));
-//         $this->db->where('cust_id', $cust_id);
-//         $this->db->update('customer');
-//     }
 }
