@@ -27,9 +27,10 @@ class Login extends CI_Controller {
     public function exec_login() {
         $user_name = $this->input->post('account', true);
         $password  = $this->input->post('password', true);
-
-        if ( $this->check_user($user_name, $password)) {
+        $user_id = $this->check_user($user_name, $password);
+        if ($user_id) {
             $this->session->set_userdata('USERNAME', $user_name);
+            $this->session->set_userdata('USER_ID', $user_id);
             $this->session->set_userdata('USER_STATUS', 'LOGIN');
             redirect('login/index', 'location');
         } else {
@@ -47,7 +48,7 @@ class Login extends CI_Controller {
         $user_data = $this->User->get_user_by_user_name($user_name);
 
         if(!empty($user_data) && $user_data['0']->password === md5($password)) {
-            return true;
+            return $user_data['0']->user_id;
         }
 
         return false;

@@ -55,4 +55,40 @@ class Ap extends CI_Model {
         $this->db->where('ap_id', $ap_id);
         $this->db->update('ap');
     }
+
+    public function get_cloudberry_info_all(){
+        $this->db->select('qr_code, serial_no');
+        $this->db->where('delete_time IS NULL');
+        $result = $this->db->get('ap');
+        return $result->result();
+    }
+
+    public function get_cloudberry_info_difference($new_data){
+        $this->db->select('qr_code, serial_no');
+        $this->db->where('delete_time IS NULL');
+        if(!empty($new_data)) {
+            $this->db->where('create_time >',$new_data[0]->create_time);
+        }
+        $result = $this->db->get('ap');
+        return $result->result();
+    }
+
+    public function get_dh_info_all(){
+        $this->db->select('serial_no');
+        $this->db->where('delete_time IS NULL');
+        $result = $this->db->get('ap');
+        return $result->result();
+    }
+
+    public function get_dh_info_difference($new_data){
+        $this->db->select('serial_no');
+        $this->db->where('delete_time IS NULL');
+        if(!empty($new_data)) {
+            $this->db->where('create_time >',$new_data[0]->create_time);
+        }
+        $result = $this->db->get('ap');
+        return $result->result();
+    }
+
 }
+

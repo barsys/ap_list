@@ -15,33 +15,30 @@
 
     <table border="1">
     <tr>
-      <td>パートナンバー</td>
-      <td>シリアルナンバー</td>
-      <td>QRコード</td>
-      <td>マックアドレス</td>
-      <td>顧客ID</td>
-      <td>ライセンス開始日時</td>
-      <td>ステータス</td>
-      <td>操作</td>
+      <td>ファイル名</td>
+      <td>用途</td>
+      <td>種類</td>
+      <td>実行ユーザ</td>
+      <td>エクスポート日時</td>
     </tr>
 
     <?php foreach($list_data as $data){ ?>
     <tr>
-      <td><?php echo $data->part_no; ?></td>
-      <td><?php echo $data->serial_no; ?></td>
-      <td><?php echo $data->qr_code; ?></td>
-      <td><?php echo $data->mac_address; ?></td>
-      <td><?php echo $data->cust_id; ?></td>
-      <td><?php echo $data->start_licence_date; ?></td>
-      <td><?php echo $data->ap_status; ?></td>
+      <td><?php echo $data->file_name; ?></td>
+      <td><?php echo $data->use; ?></td>
+      <td><?php echo $data->type; ?></td>
+      <td><?php echo $data->user_id; ?></td>
+      <td><?php echo $data->export_time; ?></td>
     </tr>
     <?php } ?>
     </table>
-    <form action="<?php echo base_url();?>import/exec" method='post' enctype="multipart/form-data">
-      <input type="radio" name="type" value="all" checked="checked">全件エクスポート
-      <input type="radio" name="type" value="difference">差分インポート
+    <form action="<?php echo base_url();?>export/exec" method='post'>
       <br><br>
-      <input type='submit' name="" value='エクスポート' />
+      <input type="radio" name="type" value="1" checked="checked">全件エクスポート
+      <input type="radio" name="type" value="2">差分インポート
+      <br><br>
+      <input type='submit' name="dh_export" value='DHエクスポート' />
+      <input type='submit' name="cloud_export" value='Cloudberryエクスポート' />
     </form>
   </body>
 </html>
