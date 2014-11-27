@@ -23,6 +23,7 @@ class Customer extends CI_Model {
         $this->db->set('cust_status', $data['cust_status']);
         $this->db->set('create_time', date("Y/m/d H:i:s"));
         $this->db->insert('customer');
+        return $this->db->insert_id();
     }
 
     public function edit($data){
