@@ -30,6 +30,8 @@ class Export extends CI_Controller {
         $use  = NULL;
         $type = $this->input->post('type');
 
+        $file_name = NULL;
+
         if(empty($this->input->post('cloud_export'))){
             // データホテル処理
             $use = self::USE_DATA_HOTEL;
@@ -67,6 +69,10 @@ class Export extends CI_Controller {
         // log登録
         $user_id = $this->session->userdata('USER_ID');
         $this->export_log_entry($file_name, $use, $type, $user_id);
+
+        // ファイルダウンロード
+        $this->load->helper('download');
+        force_download($file_name, file_get_contents($csv_file));
         redirect('export/index', 'location');
 
     }
